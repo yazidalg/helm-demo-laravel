@@ -3,12 +3,12 @@ entries:
   api:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-09-12T23:26:28.212337+07:00"
+    created: "2023-09-13T00:04:16.669484+07:00"
     description: A Helm chart for Kubernetes
-    digest: 560c192890111204ad0150c5074118e7f34db69f87a606c72d94909d3d72c901
+    digest: 6c382b7d40bf16c92dda9da708ecbc653ad41d49928334a6f7f75488012fbe27
     name: api
     type: application
     urls:
-    - git@github.com:yazidalg/helm-demo-laravel.git/api-0.1.0.tgz
+    - https://yazidalg.github.io/helm-demo-laravel/api-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-12T23:26:28.209693+07:00"
+generated: "2023-09-13T00:04:16.666763+07:00"

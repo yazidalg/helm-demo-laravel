@@ -1,13 +1,22 @@
 apiVersion: v1
 kind: Service
+{{- with .Values.service }}
 metadata:
-  name: {{ include "api.fullname" . }}-service
+  name: {{ $.Release.Name }}-service
   labels:
-    {{- include "api.labels" . | nindent 4 }}
+    app: {{ $.Release.Name }}
 spec:
-  ports:
-    - port: {{ .Values.service.port }}
-      targetPort: 8000
-      protocol: TCP
   selector:
-    {{- include "api.selectorLabels" . | nindent 4 }}
+    app: {{ $.Release.Name }}
+  ports:
+  {{- if .type.clusterIp }}
+    - port: {{ .type.clusterIp.port }}
+      targetPort: {{ .type.clusterIp.targetPort }}
+      protocol: {{ .type.clusterIp.protocol }}
+  {{- end }}
+  {{- if .type.nodePort }}
+    - port: {{ .type.nodePort.port }}
+      targetPort: {{ .type.nodePort.targetPort }}
+      protocol: {{ .type.nodePort.protocol }}
+  {{- end }}
+  

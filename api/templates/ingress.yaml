@@ -1,7 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
+{{- with .Values.ingress }}
 metadata:
-  name: {{ include "api.fullname" . }}-ingress
+  name: {{ $.Release.Name }}-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
@@ -13,6 +14,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ .Chart.Name }}
+                name: {{ $.Release.Name }}
                 port:
                   number: 80

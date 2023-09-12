@@ -6,13 +6,13 @@ replicaCount: 1
 namespaces: api
 
 image:
-  repository: 211104/image-tumbal
-  pullPolicy: Always
+  repository:
+  pullPolicy:
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v0.0.20ahsj12"
+  tag:
 
 imagePullSecrets: []
-nameOverride: "api-app"
+nameOverride: "api"
 fullnameOverride: "api-chart"
 
 podAnnotations: {}
@@ -28,9 +28,19 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
+deployment:
+  namespace:
+  replicaCount:
+  containers:
+    ports:
+    image:
+      repository:
+      tag:
+
 service:
-  type: LoadBalancer
-  port: 80
+  type:
+    clusterIP: []
+    nodePort: []
 
 ingress:
   enabled: false
