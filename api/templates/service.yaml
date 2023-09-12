@@ -6,18 +6,22 @@ metadata:
   labels:
     app: {{ $.Release.Name }}
 spec:
-  selector:
-    app: {{ $.Release.Name }}
   ports:
   {{- if .type.clusterIP }}
     - port: {{ .type.clusterIP.port }}
       targetPort: {{ .type.clusterIP.targetPort }}
       protocol: {{ .type.clusterIP.protocol }}
+  selector:
+    app: {{ $.Release.Name }}
+  type: ClusterIP
   {{- end }}
   {{- if .type.nodePort }}
     - port: {{ .type.nodePort.port }}
       nodePort: {{ .type.nodePort.nodePort }}
       targetPort: {{ .type.nodePort.targetPort }}
       protocol: {{ .type.nodePort.protocol }}
+  selector:
+    app: {{ $.Release.Name }}
+  type: NodePort
   {{- end }}
 {{- end }}
