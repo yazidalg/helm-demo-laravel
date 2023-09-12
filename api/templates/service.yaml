@@ -9,14 +9,15 @@ spec:
   selector:
     app: {{ $.Release.Name }}
   ports:
-  {{- if .type.clusterIp }}
-    - port: {{ .type.clusterIp.port }}
-      targetPort: {{ .type.clusterIp.targetPort }}
-      protocol: {{ .type.clusterIp.protocol }}
+  {{- if .type.clusterIP }}
+    - port: {{ .type.clusterIP.port }}
+      targetPort: {{ .type.clusterIP.targetPort }}
+      protocol: {{ .type.clusterIP.protocol }}
   {{- end }}
   {{- if .type.nodePort }}
     - port: {{ .type.nodePort.port }}
+      nodePort: {{ .type.nodePort.nodePort }}
       targetPort: {{ .type.nodePort.targetPort }}
       protocol: {{ .type.nodePort.protocol }}
   {{- end }}
-  
+{{- end }}
